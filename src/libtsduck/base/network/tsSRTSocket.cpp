@@ -427,15 +427,15 @@ ts::SRTSocket::Guts::Guts() :
     local_address(),
     remote_address(),
     mode(SRTSocketMode::DEFAULT),
-    sock(-1),      // do not use SYS_SOCKET_INVALID, an SRT socket is not a socket, it is always an int
-    listener(-1),  // idem
-    transtype(SRTT_INVALID),
+    sock(SRT_INVALID_SOCK),
+    listener(SRT_INVALID_SOCK),
+    transtype(SRTT_LIVE),
     packet_filter(),
     passphrase(),
     streamid(),
     polling_time(-1),
-    messageapi(false),
-    nakreport(false),
+    messageapi(true),
+    nakreport(true),
     conn_timeout(-1),
     ffs(-1),
     linger(-1),
@@ -445,7 +445,7 @@ ts::SRTSocket::Guts::Guts() :
     payload_size(-1),
     rcvbuf(-1),
     sndbuf(-1),
-    enforce_encryption(false),
+    enforce_encryption(true),
     kmrefreshrate(-1),
     kmpreannounce(-1),
     udp_rcvbuf(-1),
@@ -460,7 +460,7 @@ ts::SRTSocket::Guts::Guts() :
     peer_idle_timeout(-1),
     peer_latency(-1),
     rcv_latency(-1),
-    tlpktdrop(false),
+    tlpktdrop(true),
     disconnected(false)
 {
 }
